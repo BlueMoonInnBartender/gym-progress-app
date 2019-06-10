@@ -1,0 +1,27 @@
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()">
+    </NavigationButton>
+    <Label class="action-bar-title" text="Settings">
+    </Label>
+</ActionBar>
+<FlexboxLayout flexDirection="column">
+    <router-outlet></router-outlet>
+    <FlexboxLayout flexDirection="column">
+    <Button
+            class="button-cw-add"
+            [nsRouterLink]="['add-trening']"
+            text="Zaplanuj trening">
+    </Button>
+    <Button
+            class="button-cw-add"
+            [nsRouterLink]="['add-cwiczenie']"
+            text="Dodaj ćwiczenie">
+    </Button>
+    <Button
+            class="button-cw-add"
+            [nsRouterLink]="['edit-profile']"
+            text="Edytuj profil">
+    </Button>
+</FlexboxLayout>
+</FlexboxLayout>
+

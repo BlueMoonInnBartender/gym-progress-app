@@ -1,0 +1,57 @@
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()">
+    </NavigationButton>
+    <Label class="action-bar-title" text="Search">
+    </Label>
+</ActionBar>
+<FlexboxLayout flexDirection="column">
+    <StackLayout>
+    <Label text="Wyszukaj ćwiczenie po dacie:"></Label>
+        <DatePicker
+                (dayChange)="onDayChange($event)"
+                (monthChange)="onMonthChanged($event)"
+                (yearChange)="onYearChanged($event)"
+                verticalAlignment="center">
+        </DatePicker>
+    </StackLayout>
+
+    <Button text="Wyszukaj" (tap)="findRecords()"></Button>
+</FlexboxLayout>
+<Label *ngIf="searched" text="SZUKALEM"></Label>
+<ScrollView height="400"  *ngIf="foundRecords.length">
+    <StackLayout>
+        <StackLayout *ngFor="let record of foundRecords" class="record-list-item">
+            <FlexboxLayout class="section date">
+                <label class="label--day" [text]="record.data | date:'EEEE':undefined:'pl'"></label>
+                <label [text]="record.data | date:'dd.MM HH:mm':undefined:'pl'"></label>
+            </FlexboxLayout>
+            <FlexboxLayout class="section">
+                <Label text="Ćwiczenie"></Label>
+                <Label [text]=[record.cwiczenie]></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="section">
+                <Label text="Liczba serii"></Label>
+                <Label [text]=[record.liczbaSerii]></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="section">
+                <Label text="Liczba powtórzeń"></Label>
+                <Label [text]=[record.liczbaPowtorzen]></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="section">
+                <Label text="Ciężar"></Label>
+                <Label [text]=[record.ciezar]></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="prog--wrapper" *ngIf="record.progress">
+                <Label text="Postęp:"></Label>
+                <Progress
+                        [value]="[record.progress | abs]"
+                        maxValue="100"
+                        [ngClass]="{'plus': record.progress > 0, 'minus': record.progress < 0 }">
+                </Progress>
+            </FlexboxLayout>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>
+
+
+

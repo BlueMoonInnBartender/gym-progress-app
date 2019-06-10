@@ -1,0 +1,16 @@
+<Label text="Imię"></Label>
+<TextField [(ngModel)]="profile.name"></TextField>
+<Label text="Nazwisko"></Label>
+<TextField [(ngModel)]="profile.surname"></TextField>
+<Label text="Waga (kg)"></Label>
+<TextField [(ngModel)]="profile.weight"></TextField>
+<Label text="Wzrost (cm)"></Label>
+<TextField [(ngModel)]="profile.height"></TextField>
+<Label text="Płeć"></Label>
+
+<Label text="Mężczyzna"></Label>
+<Switch #male [checked]="!female.checked" (checkedChange)="onCheckedChange($event)" class="male"></Switch>
+<Label text="Kobieta"></Label>
+<Switch #female [checked]="!male.checked" (checkedChange)="onCheckedChange($event)" class="female"></Switch>
+<Label [text]="profile.gender"></Label>
+<Button text="OK" (tap)="onSubmit()"></Button>

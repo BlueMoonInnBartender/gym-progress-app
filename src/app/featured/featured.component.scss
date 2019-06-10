@@ -1,0 +1,26 @@
+
+.main {
+  color: white;
+  background-color: black;
+  flex-direction: column;
+}
+.record-list-item {
+  margin: 10;
+  border-bottom-width: 2;
+  border-bottom-color: white;
+  padding-bottom: 10;
+}
+.section {
+  width: 100%;
+  justify-content: space-between;
+  font-size: 20;
+}
+.label--day {
+  text-transform: capitalize;
+}
+.date {
+  border-bottom-width: 1;
+  border-bottom-color: lightseagreen;
+}
+
+

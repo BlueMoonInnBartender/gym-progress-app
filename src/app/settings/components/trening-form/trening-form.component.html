@@ -1,0 +1,35 @@
+<ScrollView height="400">
+    <StackLayout>
+        <Label text="Wybierz datę"></Label>
+        <DatePicker
+                (dayChange)="onDayChange($event)"
+                (monthChange)="onMonthChanged($event)"
+                (yearChange)="onYearChanged($event)"
+                verticalAlignment="center">
+        </DatePicker>
+        <TimePicker
+                (timeChange)="onTimeChange($event)"
+                verticalAlignment="center">
+        </TimePicker>
+        <Label text="Wybierz ćwiczenie"></Label>
+        <ListPicker
+                [items]="cwiczeniaNames"
+                selectedIndex="0"
+                (selectedIndexChange)="selectedIndexChanged($event)">
+        </ListPicker>
+        <Label text="Liczba serii"></Label>
+        <TextField keyboardType="number" [(ngModel)]="serie"></TextField>
+        <Label text="Liczba powtórzeń"></Label>
+        <TextField keyboardType="number" [(ngModel)]="powtorzenia"></TextField>
+        <Label text="Ciężar (kg)"></Label>
+        <TextField keyboardType="number" [(ngModel)]="ciezar"></TextField>
+        <Button
+                (tap)="addCwiczenie()"
+                text="DODAJ ĆWICZENIE"
+        ></Button>
+        <Button
+                (tap)="addTrening()"
+                text="DODAJ TRENING"
+        ></Button>
+    </StackLayout>
+</ScrollView>

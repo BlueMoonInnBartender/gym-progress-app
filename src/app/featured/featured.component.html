@@ -1,0 +1,35 @@
+<ActionBar class="action-bar">
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <Label class="action-bar-title" text="Featured"></Label>
+</ActionBar>
+<FlexboxLayout class="main">
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout *ngFor="let trening of treningi">
+                <FlexboxLayout class="section date">
+                    <label [text]="trening.data | date:'EEEE':undefined:'pl'"></label>
+                    <label [text]="trening.data | date:'dd.MM HH:mm':undefined:'pl'"></label>
+                </FlexboxLayout>
+
+                <StackLayout *ngFor="let cwiczenie of trening.cwiczenia">
+                    <FlexboxLayout class="section">
+                        <Label text="Ćwiczenie"></Label>
+                        <Label [text]=[cwiczenie.nazwa]></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="section">
+                        <Label text="Liczba serii"></Label>
+                        <Label [text]=[cwiczenie.liczbaSerii]></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="section">
+                        <Label text="Liczba powtórzeń"></Label>
+                        <Label [text]=[cwiczenie.liczbaPowtorzen]></Label>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="section">
+                        <Label text="Ciężar"></Label>
+                        <Label [text]=[cwiczenie.ciezar]></Label>
+                    </FlexboxLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</FlexboxLayout>
