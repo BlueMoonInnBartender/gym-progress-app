@@ -7,6 +7,7 @@ import { CwiczenieFormComponent } from "~/app/settings/components/cwiczenie-form
 import { NativeScriptFormsModule } from "nativescript-angular";
 import { ProfileFormComponent } from "~/app/settings/components/profile-form/profile-form.component";
 import { TreningFormComponent } from "~/app/settings/components/trening-form/trening-form.component";
+import { OptionsComponent } from "~/app/settings/components/options/options.component";
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { TreningFormComponent } from "~/app/settings/components/trening-form/tre
         CwiczenieFormComponent,
         ProfileFormComponent,
         TreningFormComponent,
+        OptionsComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -1,11 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { StoreService } from "~/app/shared/store.service";
 import { Router } from "@angular/router";
-import { RouterExtensions } from "nativescript-angular";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
-import * as application from "tns-core-modules/application";
-import { AndroidApplication } from "tns-core-modules/application";
-import { AndroidActivityBackPressedEventData } from "tns-core-modules/application";
 import { TimePicker } from "tns-core-modules/ui/time-picker";
 import { Cwiczenie, Trening } from "~/app/shared/models";
 
@@ -29,7 +25,7 @@ export class TreningFormComponent implements OnInit {
     hours: number;
     minutes: number;
 
-    constructor(private store: StoreService, private router: Router, private routerExtensions: RouterExtensions) {
+    constructor(private store: StoreService, private router: Router) {
         // Use the component constructor to inject providers.
     }
 
@@ -62,6 +58,7 @@ export class TreningFormComponent implements OnInit {
         const cwiczenia = this.cwiczenia;
         const trening: Trening = {cwiczenia, data};
         this.store.addTrening(trening);
+        this.router.navigate(["settings"]);
     }
 
     addCwiczenie() {
@@ -74,19 +71,11 @@ export class TreningFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.cwiczeniaNames = this.store.getCwiczenia();
-        this.data = new Date(Date.now());
+        this.data = new Date();
         this.year = this.data.getFullYear();
         this.month = this.data.getMonth();
         this.day = this.data.getDate();
         this.hours = this.data.getHours();
         this.minutes = this.data.getMinutes();
-        /* application
-             .android
-             .on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-                 data.cancel = true; // prevents default back button behavior
-                 this.router.navigate(["settings"]);
-                 /!*if (this.router.isActive("/articles", false)) {}*!/
-             });*/
-
     }
 }

@@ -17,19 +17,19 @@ export class SearchComponent implements OnInit {
     year;
     records: Array<Rekord>;
     foundRecords: Array<Rekord> = [];
-    searched = false;
 
     constructor(private store: StoreService) {
     }
     findRecords() {
         this.foundRecords = this.records.filter((record: Rekord) => {
-            let year = record.data.getFullYear();
-            let month = record.data.getMonth();
-            let day = record.data.getDate();
+            const data  = new Date(record.data);
+
+            let year = data.getFullYear();
+            let month = data.getMonth();
+            let day = data.getDate();
 
             return ((this.year === year) && (this.month === month) && (this.day === day));
         });
-        this.searched = !this.searched;
     }
     onDayChange(args) {
         this.day = args.value;
@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
     }
     ngOnInit(): void {
         this.records = this.store.getRecords();
-        this.data = new Date(Date.now());
+        this.data = new Date();
         this.year = this.data.getFullYear();
         this.month = this.data.getMonth();
         this.day = this.data.getDate();

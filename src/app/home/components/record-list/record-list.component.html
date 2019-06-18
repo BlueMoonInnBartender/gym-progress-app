@@ -1,34 +1,42 @@
-<ScrollView>
-    <StackLayout>
-        <StackLayout *ngFor="let record of records; let i = index" class="record-list-item">
-            <FlexboxLayout class="section date">
-                <label class="label--day" [text]="record.data | date:'EEEE':undefined:'pl'"></label>
-                <label [text]="record.data | date:'dd.MM HH:mm':undefined:'pl'"></label>
-            </FlexboxLayout>
-            <FlexboxLayout class="section">
-                <Label text="Ćwiczenie"></Label>
-                <Label [text]=[record.cwiczenie]></Label>
-            </FlexboxLayout>
-            <FlexboxLayout class="section">
-                <Label text="Liczba serii"></Label>
-                <Label [text]=[record.liczbaSerii]></Label>
-            </FlexboxLayout>
-            <FlexboxLayout class="section">
-                <Label text="Liczba powtórzeń"></Label>
-                <Label [text]=[record.liczbaPowtorzen]></Label>
-            </FlexboxLayout>
-            <FlexboxLayout class="section">
-                <Label text="Ciężar"></Label>
-                <Label [text]=[record.ciezar]></Label>
-            </FlexboxLayout>
-            <FlexboxLayout class="prog--wrapper" *ngIf="record.progress">
-                <Label text="Postęp:"></Label>
-              <Progress
-                      [value]="[record.progress | abs]"
-                      maxValue="100"
-                      [ngClass]="{'plus': record.progress > 0, 'minus': record.progress < 0 }">
-              </Progress>
-            </FlexboxLayout>
+<DockLayout class="main" stretchLastChild="false">
+    <ScrollView dock="top" height="80%">
+        <StackLayout>
+            <StackLayout *ngFor="let record of records; let i = index" class="record-list-item">
+                <FlexboxLayout class="section date">
+                    <label class="label--day" [text]="record.data | date:'EEEE':undefined:'pl'"></label>
+                    <label [text]="record.data | date:'dd.MM HH:mm':undefined:'pl'"></label>
+                </FlexboxLayout>
+                <FlexboxLayout class="section">
+                    <Label text="Ćwiczenie"></Label>
+                    <Label [text]=[record.cwiczenie]></Label>
+                </FlexboxLayout>
+                <FlexboxLayout class="section">
+                    <Label text="Liczba serii"></Label>
+                    <Label [text]=[record.liczbaSerii]></Label>
+                </FlexboxLayout>
+                <FlexboxLayout class="section">
+                    <Label text="Liczba powtórzeń"></Label>
+                    <Label [text]=[record.liczbaPowtorzen]></Label>
+                </FlexboxLayout>
+                <FlexboxLayout class="section">
+                    <Label text="Ciężar"></Label>
+                    <Label [text]=[record.ciezar]></Label>
+                </FlexboxLayout>
+                <FlexboxLayout class="prog--wrapper" *ngIf="record.progress">
+                    <Label text="Postęp:"></Label>
+                    <Progress
+                            [value]="[record.progress | abs]"
+                            maxValue="100"
+                            [ngClass]="{'plus': record.progress > 0, 'minus': record.progress < 0 }">
+                    </Progress>
+                </FlexboxLayout>
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
-</ScrollView>
+    </ScrollView>
+    <FlexboxLayout dock="bottom" class="container--button" height="20%">
+        <Button
+                class="button--add"
+                [nsRouterLink]="['form']"
+                text="+"></Button>
+    </FlexboxLayout>
+</DockLayout>

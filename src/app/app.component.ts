@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
@@ -24,15 +24,14 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.store.profileSubject$.subscribe((profile: Profile) => {
             this.profile = profile;
+            this.profile.gender = profile.gender === "male" ? "mężczyzna" : "kobieta";
         });
         this._activatedUrl = "/home";
         this._sideDrawerTransition = new SlideInOnTopTransition();
-
         this.router.events
-        .pipe(filter((event: any) => event instanceof NavigationEnd))
-        .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
+            .pipe(filter((event: any) => event instanceof NavigationEnd))
+            .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
     }
-
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
     }

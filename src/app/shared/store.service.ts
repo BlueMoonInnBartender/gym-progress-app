@@ -7,15 +7,15 @@ import { BehaviorSubject } from "rxjs";
 })
 export class StoreService {
     private state: State = {
-        rekordy: [new Rekord("wiosłowanie", '3', '10', '60', 0, new Date(Date.now()))],
+        rekordy: [new Rekord("wiosłowanie", '3', '10', '60', 0, new Date())],
         cwiczenia: ["wiosłowanie", "przysiad", "martwy ciąg"],
         profile: {
-            name: "Name",
-            surname: "Surname",
+            name: "Tymoteusz",
+            surname: "Sztacheta",
             gender: "male",
-            weight: '70',
-            height: '175',
-            bmi: '0'
+            weight: '85',
+            height: '185',
+            bmi: '22'
         },
         treningi: []
     };

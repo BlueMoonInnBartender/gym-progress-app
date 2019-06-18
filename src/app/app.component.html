@@ -1,12 +1,30 @@
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <FlexboxLayout class="user--data">
-            <Label [text]="profile.name"></Label>
-            <Label [text]="profile.surname"></Label>
-            <Label [text]="profile.bmi"></Label>
-            <Label [text]="profile.weight"></Label>
-            <Label [text]="profile.height"></Label>
-            <Label [text]="profile.gender"></Label>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="Imię"></Label>
+                <Label [text]="profile.name"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="Nazwisko"></Label>
+                <Label [text]="profile.surname"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="BMI"></Label>
+                <Label [text]="profile.bmi"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="Waga"></Label>
+                <Label [text]="profile.weight+' kg'"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="Wzrost"></Label>
+                <Label [text]="profile.height+' cm'"></Label>
+            </FlexboxLayout>
+            <FlexboxLayout class="profile--control">
+                <Label class="profile--lab" text="Płeć"></Label>
+                <Label [text]="profile.gender"></Label>
+            </FlexboxLayout>
         </FlexboxLayout>
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
@@ -21,11 +39,8 @@
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
                     <Label col="0" text="&#xf005;" class="fa"></Label>
-                    <Label col="1" text="Featured" class="p-r-10"></Label>
+                    <Label col="1" text="Trainings" class="p-r-10"></Label>
                 </GridLayout>
-    
-                <StackLayout class="hr-light"></StackLayout>
-
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">
                     <Label col="0" text="&#xf013;" class="fa"></Label>
                     <Label col="1" text="Settings" class="p-r-10"></Label>

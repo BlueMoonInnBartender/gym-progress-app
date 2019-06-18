@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { Router } from "@angular/router";
 
 @Component({
     selector: "Home",
@@ -10,7 +9,8 @@ import { Router } from "@angular/router";
     styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-    constructor(private router: Router) {
+
+    constructor() {
         // Use the component constructor to inject providers.
     }
     ngOnInit(): void {

@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { StoreService } from "~/app/shared/store.service";
 import { Rekord } from "~/app/shared/models";
-import * as application from "tns-core-modules/application";
-import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
 import { Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular";
 
@@ -60,7 +58,7 @@ export class FormComponent implements OnInit {
     }
 
     addRecord() {
-        const record = new Rekord(this.picked, this.serie, this.powtorzenia, this.ciezar, 0, new Date(Date.now()));
+        const record = new Rekord(this.picked, this.serie, this.powtorzenia, this.ciezar, 0, new Date());
         this.calcProgress(record);
 
         this.store.addRecord(record);
@@ -74,13 +72,5 @@ export class FormComponent implements OnInit {
     ngOnInit(): void {
         this.cwiczenia = this.store.getCwiczenia();
         this.records = this.store.getRecords();
-        application
-            .android
-            .on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-                data.cancel = true; // prevents default back button behavior
-                this.router.navigate(["home"]);
-                /*if (this.router.isActive("/articles", false)) {}*/
-            });
-
     }
 }

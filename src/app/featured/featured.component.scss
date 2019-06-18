@@ -1,26 +1,17 @@
-
-.main {
-  color: white;
-  background-color: black;
-  flex-direction: column;
-}
-.record-list-item {
-  margin: 10;
-  border-bottom-width: 2;
-  border-bottom-color: white;
-  padding-bottom: 10;
-}
-.section {
-  width: 100%;
-  justify-content: space-between;
-  font-size: 20;
-}
-.label--day {
-  text-transform: capitalize;
+.trening {
+  padding: 15;
+  border-width: 1;
+  border-color: seagreen;
+  margin-bottom: 20;
 }
 .date {
-  border-bottom-width: 1;
-  border-bottom-color: lightseagreen;
+  color: seagreen;
+  font-size: 19;
+  font-weight: 700;
 }
-
-
+.cwiczenie {
+  padding: 20;
+  border-width: 1;
+  margin-top: -1;
+  border-color: #D84039;
+}

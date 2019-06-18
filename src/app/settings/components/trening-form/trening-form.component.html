@@ -1,33 +1,43 @@
-<ScrollView height="400">
+<ScrollView height="100%">
     <StackLayout>
-        <Label text="Wybierz datę"></Label>
-        <DatePicker
+        <Label class="label--wyb" text="Wybierz datę"></Label>
+        <DatePicker class="date-picker"
                 (dayChange)="onDayChange($event)"
                 (monthChange)="onMonthChanged($event)"
                 (yearChange)="onYearChanged($event)"
                 verticalAlignment="center">
         </DatePicker>
-        <TimePicker
+        <TimePicker class="date-picker"
                 (timeChange)="onTimeChange($event)"
                 verticalAlignment="center">
         </TimePicker>
-        <Label text="Wybierz ćwiczenie"></Label>
-        <ListPicker
-                [items]="cwiczeniaNames"
-                selectedIndex="0"
-                (selectedIndexChange)="selectedIndexChanged($event)">
-        </ListPicker>
-        <Label text="Liczba serii"></Label>
-        <TextField keyboardType="number" [(ngModel)]="serie"></TextField>
-        <Label text="Liczba powtórzeń"></Label>
-        <TextField keyboardType="number" [(ngModel)]="powtorzenia"></TextField>
-        <Label text="Ciężar (kg)"></Label>
-        <TextField keyboardType="number" [(ngModel)]="ciezar"></TextField>
-        <Button
-                (tap)="addCwiczenie()"
-                text="DODAJ ĆWICZENIE"
-        ></Button>
-        <Button
+        <FLexboxLayout class="form--cwiczenie main">
+            <ScrollView>
+                <StackLayout>
+                    <FlexboxLayout class="form--control"> <Label text="Wybierz ćwiczenie"></Label>
+                        <ListPicker
+                                [items]="cwiczeniaNames"
+                                selectedIndex="0"
+                                (selectedIndexChange)="selectedIndexChanged($event)">
+                        </ListPicker>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="form--control"> <Label text="Liczba serii"></Label>
+                        <TextField keyboardType="number" [(ngModel)]="serie"></TextField>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="form--control"> <Label text="Liczba powtórzeń"></Label>
+                        <TextField keyboardType="number" [(ngModel)]="powtorzenia"></TextField>
+                    </FlexboxLayout>
+                    <FlexboxLayout class="form--control"> <Label text="Ciężar (kg)"></Label>
+                        <TextField keyboardType="number" [(ngModel)]="ciezar"></TextField>
+                    </FlexboxLayout>
+                    <Button
+                            (tap)="addCwiczenie()"
+                            text="Dodaj ćwiczenie"
+                    ></Button>
+                </StackLayout>
+            </ScrollView>
+        </FLexboxLayout>
+        <Button class="add--trening"
                 (tap)="addTrening()"
                 text="DODAJ TRENING"
         ></Button>

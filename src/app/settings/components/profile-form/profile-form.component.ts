@@ -1,14 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { StoreService } from "~/app/shared/store.service";
-import { RouterExtensions } from "nativescript-angular";
 import { EventData } from "tns-core-modules/data/observable";
 import { Switch } from "tns-core-modules/ui/switch";
 import { Profile } from "~/app/shared/models";
 import { Router } from "@angular/router";
-import * as application from "tns-core-modules/application";
-import { AndroidApplication } from "tns-core-modules/application";
-import { AndroidActivityBackPressedEventData } from "tns-core-modules/application";
-
 @Component({
     selector: "ProfileForm",
     moduleId: module.id,
@@ -42,18 +37,10 @@ export class ProfileFormComponent implements OnInit {
     }
 
     constructor(
-        private routerExtensions: RouterExtensions,
         private router: Router,
         private store: StoreService) {
     }
 
     ngOnInit(): void {
-        application
-            .android
-            .on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-                data.cancel = true; // prevents default back button behavior
-                this.router.navigate(["settings"]);
-                /*if (this.router.isActive("/articles", false)) {}*/
-            });
     }
 }

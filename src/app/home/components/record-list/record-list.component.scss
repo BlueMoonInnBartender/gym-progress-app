@@ -1,33 +1,16 @@
-.record-list-item {
-  margin: 10;
-  border-bottom-width: 2;
-  border-bottom-color: white;
-  padding-bottom: 10;
+.button--add {
+  height: 70;
+  width: 70;
+  border-radius: 50%;
+  margin-right: 10;
+  font-size: 25;
+  line-height: 70;
+  text-align: center;
+  background-color: #D84039;
+  color: black;
 }
-.section {
-  width: 100%;
-  justify-content: space-between;
-  font-size: 20;
+.container--button {
+  padding: 2 0;
+  justify-content: flex-end;
+  align-items: center;
 }
-.label--day {
-  text-transform: capitalize;
-}
-.date {
-  border-bottom-width: 1;
-  border-bottom-color: lightseagreen;
-}
-.prog--wrapper {
-  margin-top: 5;
-  flex-direction: column;
-  border-width: 1;
-  border-color: white;
-}
-.plus {
-  color: green;
-  width: 100%;
-}
-.minus {
-  color: red;
-  width: 100%;
-}
-
